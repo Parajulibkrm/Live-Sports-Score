@@ -1,10 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta charset="utf-8" />
+    <title>Skore | Live Score App</title>
+    <link rel="icon" type="image/x-icon" href="Skore.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1,viewport-fit=cover, shrink-to-fit=yes"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- possible content values: default, black or black-translucent -->
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta name="referrer" content="origin" />
+
+    <!-- <meta name="mobile-web-app-capable" content="yes" /> -->
+    <meta name="image" content="Skore.png" />
+    <!-- OpenGraph tags -->
+    <meta property="og:url" content="https://skore.bikram.io" />
+    <meta property="og:site_name" content="Skore" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Skore" />
+    <meta
+      property="og:description"
+      content="Real Time Sports Scores to with Pusher."
+    />
+    <!-- OG tags require an absolute url for images -->
+    <meta property="og:image" name="twitter:image" content="Skore-cover.png" />
+    <meta
+      property="og:image:secure_url"
+      name="twitter:image"
+      content="Skore-cover.png"
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="669" />
+    <meta property="og:image:alt" content="Skore logo with byline." />
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Skore" />
+    <meta
+      name="twitter:description"
+      content="Skore is a real time sports score application powered by Pusher."
+    />
+    <meta name="description" content="An app to draw" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // setting this so that libraries installation reuses this window tab.
+      window.name = "_Skore";
+    </script>
+    <style>
+      body,
+      html {
+        /* margin: 10px; */
+        --ui-font: "Poppins", system-ui, BlinkMacSystemFont, -apple-system,
+          Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        font-family: var(--ui-font);
+        -webkit-text-size-adjust: 100%;
+        width: 100%;
+        /* height: 100%; */
+      }
+      body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+      }
+      html {
+        height: -webkit-fill-available;
+        overflow: hidden;
+      }
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      #root {
+        height: 100vh;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media screen and (min-width: 1200px) {
+        #root {
+          -webkit-touch-callout: default;
+          -webkit-user-select: auto;
+          -khtml-user-select: auto;
+          -moz-user-select: auto;
+          -ms-user-select: auto;
+          user-select: auto;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
