@@ -1,11 +1,13 @@
 import {
   Badge,
+  Box,
   Card,
   Center,
   Container,
   createStyles,
   Group,
   Image,
+  ScrollArea,
   Space,
   Text,
 } from "@mantine/core";
@@ -15,10 +17,12 @@ import { IconPhoto, IconMessageCircle, IconSettings } from "@tabler/icons";
 
 import React from "react";
 import GameCard from "../Components/GameCard";
+import GameTimeline from "../Components/GameTimeline";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   card: {
     backgroundColor: "#9272EA",
+    height: "100%",
   },
   title: {
     color: theme.white,
@@ -92,7 +96,12 @@ const Game = () => {
           </Tabs.List>
 
           <Tabs.Panel value="gallery" pt="xs">
-            Gallery tab content
+            <ScrollArea style={{ height: "50vh" }}>
+              <Box style={{ height: "auto" }}>
+                <GameTimeline />
+              </Box>
+            </ScrollArea>
+            {/* </Box> */}
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pt="xs">
