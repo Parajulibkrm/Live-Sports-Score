@@ -1,9 +1,9 @@
-import { Avatar, Badge, Group, ScrollArea } from "@mantine/core";
+import { Avatar, Badge, Container, Group, ScrollArea } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
 import SportsPill from "../Components/SportsPill";
 import autoAnimate from "@formkit/auto-animate";
 import CarouselGames from "../Components/CarouselGames";
-import MatchList from "../Components/MatchList";
+import MatchListItem from "../Components/MatchListItem";
 
 const SPORTS = [
   {
@@ -35,29 +35,38 @@ const Home = () => {
   return (
     <>
       <div>Home</div>
-      <ScrollArea
-        offsetScrollbars
-        sx={{ width: "100%" }}
-        styles={(_) => ({
-          scrollbar: {
-            visibility: "hidden",
-          },
-        })}
-      >
-        <Group ref={parentRef} style={{ width: "150%" }}>
-          {SPORTS.map((sport, index) => (
-            <div onClick={() => setSelected(index)} key={sport.slug}>
-              <SportsPill
-                src={sport.img}
-                isSelected={selected === index}
-                title={sport.title}
-              />
-            </div>
-          ))}
-        </Group>
-      </ScrollArea>
-      <CarouselGames />
-      <MatchList />
+      <Container style={{ padding: 16 }}>
+        <ScrollArea
+          offsetScrollbars
+          sx={{ width: "100%" }}
+          styles={(_) => ({
+            scrollbar: {
+              visibility: "hidden",
+            },
+          })}
+        >
+          <Group ref={parentRef} style={{ width: "150%" }}>
+            {SPORTS.map((sport, index) => (
+              <div onClick={() => setSelected(index)} key={sport.slug}>
+                <SportsPill
+                  src={sport.img}
+                  isSelected={selected === index}
+                  title={sport.title}
+                />
+              </div>
+            ))}
+          </Group>
+        </ScrollArea>
+        <CarouselGames />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+        <MatchListItem />
+      </Container>
     </>
   );
 };
