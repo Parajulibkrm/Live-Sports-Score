@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { useCallback, useEffect, useState } from "react";
 import GameCard from "./GameCard";
+import GameCardWrapper from "./GameCardWrapper";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   controls: {
@@ -106,132 +107,39 @@ function CarouselGames() {
         }}
       >
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-            className={classes.card}
-          >
-            <GameCard />
-            <Center>
-              <Text className={classes.description} size="sm">
-                Description
-              </Text>
-            </Center>
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
         <Carousel.Slide>
-          <Card
-            shadow="sm"
-            p="lg"
-            radius="md"
-            withBorder
-            style={{ height: "100%" }}
-          >
-            1
-          </Card>
+          <GameCardWrapper />
         </Carousel.Slide>
+
         {/* ...other slides */}
       </Carousel>
       <Progress
