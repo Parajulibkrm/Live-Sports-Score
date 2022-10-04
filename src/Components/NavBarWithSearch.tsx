@@ -185,7 +185,7 @@ export function NavbarSimple(): JSX.Element {
       p="md"
       hiddenBreakpoint="sm"
       hidden={!opened}
-      style={{ marginRight: 0 }}
+      style={{ marginRight: 0, height: "100%" }}
       // height="auto"
       width={
         opened ? { sm: 200, lg: 300, md: 250 } : { sm: 50, lg: 50, md: 50 }
