@@ -17,6 +17,7 @@ import { IconPhoto, IconMessageCircle, IconSettings } from "@tabler/icons";
 
 import React from "react";
 import GameCard from "../Components/GameCard";
+import GameHeader from "../Components/GameHeader";
 import GameTimeline from "../Components/GameTimeline";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -62,6 +63,7 @@ const Game = () => {
       className={classes.card}
     >
       <Container mb={16}>
+        <GameHeader title="Game Title" />
         <GameCard />
         <Group position="apart">
           <Group position="left">

@@ -4,6 +4,7 @@ import SportsPill from "../Components/SportsPill";
 import autoAnimate from "@formkit/auto-animate";
 import CarouselGames from "../Components/CarouselGames";
 import MatchListItem from "../Components/MatchListItem";
+import HeaderMiddle from "../Components/HeaderMiddle";
 
 const SPORTS = [
   {
@@ -34,8 +35,15 @@ const Home = () => {
 
   return (
     <>
-      <div>Home</div>
-      <Container style={{ padding: 16 }}>
+      <Container
+        sx={(theme) => ({
+          padding: 0,
+          [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+            padding: 8,
+          },
+        })}
+      >
+        <HeaderMiddle />
         <ScrollArea
           offsetScrollbars
           sx={{ width: "100%" }}
