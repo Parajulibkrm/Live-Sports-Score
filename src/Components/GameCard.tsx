@@ -45,14 +45,6 @@ const GameCard = () => {
   const { classes } = useStyles();
   return (
     <>
-      <Group position="apart">
-        <Group align={"flex-end"}>
-          <Text className={classes.title}>Hello World</Text>
-        </Group>
-        <Group>
-          <Badge>live</Badge>
-        </Group>
-      </Group>
       {/* <Text size="sm" className={classes.description}>
               Page views
             </Text> */}
