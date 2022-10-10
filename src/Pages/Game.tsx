@@ -31,6 +31,11 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     fontWeight: 700,
     fontSize: theme.fontSizes.sm,
   },
+  player: {
+    color: theme.white,
+    fontWeight: 400,
+    fontSize: 13,
+  },
   goals: {
     color: theme.white,
     fontWeight: 700,
@@ -59,37 +64,60 @@ const Game = () => {
     <Card
       shadow="sm"
       radius="md"
-      style={{ height: "100%", padding: 0, paddingTop: 16, marginLeft: 0 }}
+      style={{
+        height: "100vh",
+        padding: 0,
+        paddingTop: 16,
+        marginLeft: 0,
+        display: "flex",
+        flexDirection: "column",
+      }}
       className={classes.card}
     >
-      <Container mb={16}>
-        <GameHeader title="Game Title" />
-        <GameCard />
-        <Group position="apart">
-          <Group position="left">
+      <div>
+        <Container mb={16}>
+          <GameHeader title="Game Title" />
+          <GameCard />
+          <Group position="apart">
+            <Group position="left">
+              <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+                <li className={classes.player}>Bahadur 58'</li>
+                <li className={classes.player}>Bahadur 58'</li>
+                <li className={classes.player}>Bahadur 58'</li>
+              </ul>
+            </Group>
+            <Space h="md" />
             <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-              <li>Bahadur 58'</li>
-              <li>Bahadur 58'</li>
-              <li>Bahadur 58'</li>
+              <li className={classes.player}>Bahadur 58'</li>
+              <li className={classes.player}>Bahadur 58'</li>
             </ul>
           </Group>
-          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-            <li>Bahadur 58'</li>
-            <li>Bahadur 58'</li>
-            <li>Bahadur 58'</li>
-          </ul>
-        </Group>
-      </Container>
+        </Container>
+      </div>
       <Card
         shadow="sm"
         p="lg"
         radius="md"
         m={0}
-        style={{ width: "100%", height: "100%" }}
+        style={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         <Tabs
           defaultValue="gallery"
-          styles={(theme) => ({ tabLabel: { fontSize: theme.fontSizes.sm } })}
+          style={{ flexGrow: 1, height: "0px" }}
+          styles={(theme) => ({
+            tabLabel: { fontSize: theme.fontSizes.sm },
+            root: {
+              flexGrow: 1,
+              height: "0px",
+              display: "flex",
+              flexDirection: "column",
+            },
+            panel: { display: "flex", flexDirection: "column" },
+          })}
         >
           <Tabs.List>
             <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
@@ -97,8 +125,12 @@ const Game = () => {
             <Tabs.Tab value="settings">Settings</Tabs.Tab>
           </Tabs.List>
 
-          <Tabs.Panel value="gallery" pt="xs">
-            <ScrollArea style={{ height: "50vh" }}>
+          <Tabs.Panel
+            value="gallery"
+            pt="xs"
+            style={{ flexGrow: 1, height: "0px" }}
+          >
+            <ScrollArea>
               <Box style={{ height: "auto" }}>
                 <GameTimeline />
               </Box>
