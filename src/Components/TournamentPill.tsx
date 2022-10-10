@@ -8,7 +8,7 @@ const scaleY = {
   transitionProperty: "transform, opacity",
 };
 
-const Ball = ({
+const Logo = ({
   src,
   isSelected,
   title,
@@ -17,7 +17,7 @@ const Ball = ({
   isSelected: boolean;
   title: string;
 }) => <Avatar alt={title} size={isSelected ? 40 : 34} radius="xl" src={src} />;
-const SportsPill = ({
+const LeaguePill = ({
   src,
   isSelected,
   title,
@@ -37,12 +37,13 @@ const SportsPill = ({
         fontWeight: 400,
         height: 40,
         fontSize: 20,
+        marginRight: 10,
       }}
       size="xl"
       radius="xl"
       color={isSelected ? "grape" : "gray"}
       variant={isSelected ? "outline" : "light"}
-      leftSection={<Ball src={src} title={title} isSelected={isSelected} />}
+      leftSection={<Logo src={src} title={title} isSelected={isSelected} />}
     >
       <Transition
         mounted={isSelected}
@@ -57,4 +58,4 @@ const SportsPill = ({
   );
 };
 
-export default SportsPill;
+export default LeaguePill;
