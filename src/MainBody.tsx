@@ -4,6 +4,7 @@ import {
   Center,
   Loader,
   MediaQuery,
+  Stack,
   Text,
 } from "@mantine/core";
 import React, { lazy, Suspense } from "react";
@@ -13,6 +14,7 @@ import NavbarSearch from "./Components/NavBarWithSearch";
 import { atom } from "jotai";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Game from "./Pages/Game";
+import FootballPreloader from "./Components/FootballPreloader";
 // import Home from "./Pages/Home";
 export const open = atom(true);
 
@@ -44,9 +46,14 @@ const MainBody = (): JSX.Element => {
         >
           <Suspense
             fallback={
-              <Center>
-                <Loader variant="dots" />
-              </Center>
+              <Stack
+                justify={"center"}
+                align={"center"}
+                style={{ height: "100vh" }}
+              >
+                {/* <Loader variant="dots" /> */}
+                <FootballPreloader />
+              </Stack>
             }
           >
             <Routes>
