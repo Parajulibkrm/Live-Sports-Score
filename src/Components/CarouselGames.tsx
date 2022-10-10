@@ -127,18 +127,6 @@ function CarouselGames() {
         <Carousel.Slide>
           <GameCardWrapper />
         </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
 
         {/* ...other slides */}
       </Carousel>
