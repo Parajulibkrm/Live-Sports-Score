@@ -14,7 +14,9 @@ import { useColorScheme, useLocalStorage } from "@mantine/hooks";
 import Dashboard from "./MainBody";
 import { IconSearch } from "@tabler/icons";
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const queryClient = new QueryClient();
 const App: React.FC = () => {
   const myCache = createEmotionCache({ key: "skore" });
   const preferredColorScheme = useColorScheme();
@@ -47,7 +49,9 @@ const App: React.FC = () => {
               searchPlaceholder="Search Anything..."
               nothingFoundMessage="Nothing found..."
             >
-              <Dashboard />
+              <QueryClientProvider client={queryClient}>
+                <Dashboard />
+              </QueryClientProvider>
               {/* </ActionIcon> */}
             </SpotlightProvider>
           </NotificationsProvider>
