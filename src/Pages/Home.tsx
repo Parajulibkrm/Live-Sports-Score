@@ -15,18 +15,26 @@ import CarouselGames from "../Components/CarouselGames";
 import MatchListItem from "../Components/MatchListItem";
 import HeaderMiddle from "../Components/HeaderMiddle";
 import { useQuery } from "@tanstack/react-query";
-import { Tournament } from "../../types";
+import { Match, Tournament } from "../../types";
+import axios from "axios";
+
 const Home = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const parentRef = useRef(null);
-  const {
-    isLoading,
-    error,
-    data: tournaments,
-  } = useQuery(["leagues"], () =>
-    fetch("http://localhost:5000/tournament").then((res) => res.json())
+  const { data: tournaments } = useQuery(
+    ["leagues"],
+    async () =>
+      await (
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/tournament`)
+      ).data
   );
-
+  const { data: matches } = useQuery<{ items: Match[]; count: number }>(
+    ["matches"],
+    async () =>
+      await (
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/match`)
+      ).data
+  );
   useEffect(() => {
     if (parentRef.current) {
       autoAnimate(parentRef.current);
@@ -95,18 +103,19 @@ const Home = () => {
         </div>
         <Divider my={10} label="Live Matches" />
         <div>
-          <CarouselGames />
+          <CarouselGames
+            data={
+              matches?.items?.filter(
+                (a) => a.status === "STARTED" || a.status === "PAUSED"
+              ) || []
+            }
+          />
         </div>
-        <Divider my={10} label="Upcoming Matches" />
+        <Divider my={10} label="All Matches" />
         <ScrollArea sx={{ flexGrow: 1 }}>
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
-          <MatchListItem />
+          {matches?.items.map((match) => (
+            <MatchListItem key={match.key} data={match} />
+          ))}
         </ScrollArea>
         {/* <Text>Test</Text> */}
       </Box>

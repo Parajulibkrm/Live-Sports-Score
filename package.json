@@ -19,8 +19,10 @@
     "@mantine/spotlight": "^5.5.0",
     "@tabler/icons": "^1.101.0",
     "@tanstack/react-query": "^4.10.3",
+    "axios": "^1.1.2",
     "embla-carousel-react": "^7.0.3",
     "jotai": "^1.8.4",
+    "pusher-js": "^7.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1"

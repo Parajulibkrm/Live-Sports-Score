@@ -11,6 +11,7 @@ import {
   Text,
 } from "@mantine/core";
 import { useCallback, useEffect, useState } from "react";
+import { Match } from "../../types";
 import GameCard from "./GameCard";
 import GameCardWrapper from "./GameCardWrapper";
 
@@ -63,7 +64,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }));
 
-function CarouselGames() {
+function CarouselGames({ data }: { data: Match[] }) {
   const { classes } = useStyles();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [embla, setEmbla] = useState<Embla | null>(null);
@@ -81,7 +82,7 @@ function CarouselGames() {
     }
   }, [embla]);
 
-  return (
+  return data.length ? (
     <>
       <Carousel
         getEmblaApi={setEmbla}
@@ -89,8 +90,10 @@ function CarouselGames() {
         slideSize="33.333333%"
         slideGap="md"
         align="start"
-        slidesToScroll={3}
+        slidesToScroll={2}
         breakpoints={[
+          { maxWidth: "xl", slideSize: "80%" },
+          { maxWidth: "lg", slideSize: "90%" },
           { maxWidth: "md", slideSize: "90%" },
           { maxWidth: "sm", slideSize: "90%", slideGap: 10 },
         ]}
@@ -106,27 +109,11 @@ function CarouselGames() {
           },
         }}
       >
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <GameCardWrapper />
-        </Carousel.Slide>
+        {data?.map((item) => (
+          <Carousel.Slide key={item.key}>
+            <GameCardWrapper data={item} />
+          </Carousel.Slide>
+        ))}
 
         {/* ...other slides */}
       </Carousel>
@@ -138,6 +125,8 @@ function CarouselGames() {
         mx="auto"
       />
     </>
+  ) : (
+    <Text>No Live Matches Available</Text>
   );
 }
 export default CarouselGames;

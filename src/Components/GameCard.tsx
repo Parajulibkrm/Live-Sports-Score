@@ -7,7 +7,10 @@ import {
   Space,
   Text,
 } from "@mantine/core";
-import React from "react";
+import { useEffect, useMemo, useState } from "react";
+
+import { Goal, Match } from "../../types";
+import { pusher } from "../MainBody";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   card: {
@@ -41,43 +44,86 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }));
 
-const GameCard = () => {
+interface GameState {
+  goals: Goal[];
+  updated: Number;
+  status: string;
+}
+const GameCard = ({
+  data,
+  setGoals,
+}: {
+  data: Match;
+  setGoals?: (goals: any[]) => void;
+}) => {
   const { classes } = useStyles();
+  const [gameState, setGameState] = useState<GameState>();
+
+  const goals = useMemo(() => {
+    const goalList = gameState?.goals.reduce(function (r, a) {
+      r[a.team] = r[a.team] || [];
+      r[a.team].push(a);
+      setGoals && setGoals(r);
+      return r;
+    }, Object.create(null));
+
+    return goalList;
+  }, [gameState]);
+
+  useEffect(() => {
+    // subscribe to state for latest goals and match status update
+    const channel = pusher.subscribe(`cache-state-${data.key}`);
+    channel.bind("state", (newMessage: GameState) => {
+      setGameState(newMessage);
+    });
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+  }, []);
+  // console.log({ data });
+
   return (
     <>
-      {/* <Text size="sm" className={classes.description}>
-              Page views
-            </Text> */}
       <Space h={"md"} />
       <Group position="apart">
         <div>
           <Center>
             <Image
-              src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+              src={data.teams[0].logo}
               width={80}
+              height={80}
+              fit={"contain"}
             />
           </Center>
           <Center>
-            <Text className={classes.description}>Chelsea</Text>
+            <Text className={classes.description}>{data.teams[0].name}</Text>
           </Center>
         </div>
         <div>
           <Center>
-            <Text className={classes.goals}>12:01</Text>
+            <Text className={classes.goals}>
+              {`${goals?.[`${data.teams[0].key}`]?.length || 0}:${
+                goals?.[`${data.teams[1].key}`]?.length || 0
+              }`}
+            </Text>
           </Center>
           <Center>
-            <Badge color={"red"}>87'</Badge>
+            <Badge color={"red"}>{`${gameState?.updated || "-"}`}</Badge>
           </Center>
         </div>
         <div>
           <Center>
             <Image
-              src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+              src={data.teams[1].logo}
               width={80}
+              height={80}
+              fit={"contain"}
             />
           </Center>
           <Center>
-            <Text className={classes.description}>Chelsea</Text>
+            <Text className={classes.description}>{data.teams[1].name}</Text>
           </Center>
         </div>
       </Group>

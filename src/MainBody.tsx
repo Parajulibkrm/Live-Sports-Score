@@ -15,11 +15,15 @@ import { atom } from "jotai";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Game from "./Pages/Game";
 import FootballPreloader from "./Components/FootballPreloader";
+import Pusher from "pusher-js";
+import PastGames from "./Components/PastGames";
+
 // import Home from "./Pages/Home";
 export const open = atom(true);
-
+export const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
+  cluster: import.meta.env.VITE_PUSHER_CLUSTER,
+});
 const Home = lazy(async () => await import("./Pages/Home"));
-// const ExcalidrawApp = lazy(async () => await import("./Excalidraw"));
 const MainBody = (): JSX.Element => {
   return (
     <Router>
@@ -29,8 +33,8 @@ const MainBody = (): JSX.Element => {
           navbar={<NavbarSearch />}
           aside={
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-              <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-                <Text>Application sidebar</Text>
+              <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 300, lg: 400 }}>
+                <PastGames />
               </Aside>
             </MediaQuery>
           }
@@ -59,7 +63,8 @@ const MainBody = (): JSX.Element => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/list" element={<Home />} />
-              <Route path="/game" element={<Game />} />
+              <Route path="/past" element={<PastGames />} />
+              <Route path="/game/:id" element={<Game />} />
             </Routes>
           </Suspense>
         </AppShell>

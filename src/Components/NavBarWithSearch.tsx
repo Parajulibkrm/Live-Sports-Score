@@ -124,21 +124,21 @@ const useStyles = createStyles((theme, _params, getRef) => {
 });
 
 const data = [
-  { link: "/list", label: "Drawings", icon: IconArtboard, comingSoon: false },
+  { link: "/list", label: "Home", icon: IconArtboard, comingSoon: false },
   {
-    link: "/app",
-    label: "Create New",
+    link: "/past",
+    label: "Past Games",
     icon: IconSquarePlus,
     comingSoon: false,
   },
-  { link: "#", label: "Settings", icon: IconSettings, comingSoon: true },
-  {
-    link: "#",
-    label: "Collections",
-    icon: IconDatabaseImport,
-    comingSoon: true,
-  },
-  { link: "#", label: "Tags", icon: IconTag, comingSoon: true },
+  // { link: "#", label: "Settings", icon: IconSettings, comingSoon: true },
+  // {
+  //   link: "#",
+  //   label: "Collections",
+  //   icon: IconDatabaseImport,
+  //   comingSoon: true,
+  // },
+  // { link: "#", label: "Tags", icon: IconTag, comingSoon: true },
 ];
 
 const InstallPWA = lazy(async () => await import("./InstallPwa"));
@@ -204,12 +204,12 @@ export function NavbarSimple(): JSX.Element {
             </Group>
             <Image
               className={classes.header}
-              src={dark ? "./Draww-dark-cover.png" : "./Draww-cover.png"}
+              src={dark ? "./dark.png" : "./light.png"}
             />
             <Group position="apart">
               <Group>
                 <Text size={"lg"} style={{ paddingLeft: 15 }}>
-                  Drawww
+                  Skore
                 </Text>
               </Group>
               <Group>
@@ -244,14 +244,14 @@ export function NavbarSimple(): JSX.Element {
           </Navbar.Section>
 
           <Navbar.Section className={classes.footer}>
-            <a
+            {/* <a
               href="#"
               className={classes.link}
               onClick={(event) => event.preventDefault()}
             >
               <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
               <span>Change account</span>
-            </a>
+            </a> */}
 
             <Suspense>
               <InstallPWA className={classes.link}>

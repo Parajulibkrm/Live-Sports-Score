@@ -1,0 +1,5 @@
+@font-face {
+font-family: "fontball";
+src: local("fontball"),
+ url("../fontball.ttf") format("truetype");
+}

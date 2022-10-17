@@ -1,6 +1,7 @@
 import { Badge, Card, Center, createStyles, Group, Text } from "@mantine/core";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Match } from "../../types";
 import GameCard from "./GameCard";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -20,7 +21,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }));
 
-const GameCardWrapper = () => {
+const GameCardWrapper = ({ data }: { data: Match }) => {
   const { classes } = useStyles();
   return (
     <Card
@@ -31,20 +32,20 @@ const GameCardWrapper = () => {
       style={{ height: "100%" }}
       className={classes.card}
       component={Link}
-      to="/game"
+      to={`/game/${data.key}`}
     >
       <Group position="apart">
         <Group align={"flex-end"}>
-          <Text className={classes.title}>Hello World</Text>
+          <Text className={classes.title}>{data.title}</Text>
         </Group>
         <Group>
-          <Badge>live</Badge>
+          <Badge>{data.status}</Badge>
         </Group>
       </Group>
-      <GameCard />
+      <GameCard data={data} />
       <Center>
         <Text className={classes.description} size="sm">
-          Description
+          {data.tournament?.title}
         </Text>
       </Center>
     </Card>

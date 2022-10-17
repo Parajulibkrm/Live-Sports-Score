@@ -22,17 +22,20 @@ export interface Tournament {
     title: string;
     logo: string;
 }
+export interface Goal {
+    player: Player, assist: Player, timeStamp: number, matchTimeStamp: number, team: string
+}
 export interface Match {
     key?: string;
     title: string;
-    tournament?: string;
+    tournament: Tournament | null;
     desc: string;
     venue: string;
     time: number;
     status: 'SCHEDULED' | 'STARTED' | 'CANCELED' | 'POSTPONED' | 'PAUSED' | 'ENDED';
     events: string[];
-    teams: string[];
-    goals: [{ player: string, assist: string, timeStamp: number, matchTimeStamp: number, team: string }]
+    teams: Team[];
+    goals: Goal[]
 }
 export interface Event {
     type: string;

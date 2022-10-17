@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import { IconCalendar } from "@tabler/icons";
 import React from "react";
-
+import { Match } from "../../types";
 const useStyles = createStyles((theme) => ({
   item: {
     ...theme.fn.focusStyles(),
@@ -32,7 +32,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const MatchListItem = () => {
+const MatchListItem = ({
+  data,
+  min = false,
+}: {
+  data: Match;
+  min?: boolean;
+}) => {
   const { classes } = useStyles();
   return (
     <div className={classes.item}>
@@ -41,16 +47,20 @@ const MatchListItem = () => {
           <Group position="left">
             <Center>
               <Image
-                src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+                src={data.teams[0].logo}
                 width={35}
+                height={35}
+                fit={"contain"}
               />
             </Center>
-            {/* <MediaQuery
-              smallerThan={"sm"}
-              styles={{ visibility: "hidden", height: 0, width: 0 }}
-            >
-              <Text>Chel</Text>
-            </MediaQuery> */}
+            {!min && (
+              <MediaQuery
+                smallerThan={"sm"}
+                styles={{ visibility: "hidden", height: 0, width: 0 }}
+              >
+                <Text>{data.teams[0].name}</Text>
+              </MediaQuery>
+            )}
           </Group>
           {/* <MediaQuery
             largerThan={"sm"}
@@ -60,29 +70,34 @@ const MatchListItem = () => {
           </MediaQuery> */}
         </div>
         <MediaQuery smallerThan={"sm"} styles={{ fontSize: 13 }}>
-          <div>
+          <div style={{ fontSize: min ? 13 : 16 }}>
             <Center>
-              <Text>Match Title A little Long Title</Text>
+              <Text>{data.title}</Text>
             </Center>
             <Group position="center">
-              <IconCalendar size={20} /> <Text>Chelsea</Text>
+              <IconCalendar size={20} />{" "}
+              <Text>{new Date(data.time * 1000).toLocaleString()}</Text>
             </Group>
           </div>
         </MediaQuery>
         <div>
           <Group position="right">
+            {!min && (
+              <MediaQuery
+                smallerThan={"sm"}
+                styles={{ visibility: "hidden", height: 0, width: 0 }}
+              >
+                <Text>{data.teams[1].name}</Text>
+              </MediaQuery>
+            )}
             <Center>
               <Image
-                src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+                src={data.teams[1].logo}
                 width={35}
+                height={35}
+                fit={"contain"}
               />
             </Center>
-            {/* <MediaQuery
-              smallerThan={"sm"}
-              styles={{ visibility: "hidden", height: 0, width: 0 }}
-            >
-              <Text>Chel</Text>
-            </MediaQuery> */}
           </Group>
           {/* <MediaQuery
             largerThan={"sm"}

@@ -62,20 +62,20 @@ export function HeaderMiddle(): JSX.Element {
   const dark = colorScheme === "dark";
   const { classes } = useStyles();
 
-  useEffect(() => {
-    if ("storage" in navigator && "estimate" in navigator.storage) {
-      navigator.storage
-        .estimate()
-        .then((estimate) => {
-          console.log(
-            `Using ${estimate?.usage ?? "na"} out of ${
-              estimate?.quota ?? "na"
-            } bytes.`
-          );
-        })
-        .catch(console.log);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if ("storage" in navigator && "estimate" in navigator.storage) {
+  //     navigator.storage
+  //       .estimate()
+  //       .then((estimate) => {
+  //         console.log(
+  //           `Using ${estimate?.usage ?? "na"} out of ${
+  //             estimate?.quota ?? "na"
+  //           } bytes.`
+  //         );
+  //       })
+  //       .catch(console.log);
+  //   }
+  // }, []);
   return (
     <Group
       className={classes.inner}
@@ -108,7 +108,7 @@ export function HeaderMiddle(): JSX.Element {
         </Avatar> */}
       </Group>
       <Image
-        src={dark ? "Draww-dark-cover.png" : "Draww-cover.png"}
+        src={dark ? "dark.png" : "light.png"}
         style={{ maxHeight: 50, maxWidth: 100 }}
       />
 
