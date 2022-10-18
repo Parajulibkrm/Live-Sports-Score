@@ -76,7 +76,7 @@ const MatchListItem = ({
             </Center>
             <Group position="center">
               <IconCalendar size={20} />{" "}
-              <Text>{new Date(data.time * 1000).toLocaleString()}</Text>
+              <Text>{new Date(data.time).toLocaleString()}</Text>
             </Group>
           </div>
         </MediaQuery>
