@@ -33,7 +33,7 @@ const MainBody = (): JSX.Element => {
           navbar={<NavbarSearch />}
           aside={
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-              <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 300, lg: 400 }}>
+              <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 450, lg: 470 }}>
                 <PastGames />
               </Aside>
             </MediaQuery>

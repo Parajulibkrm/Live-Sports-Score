@@ -20,7 +20,8 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     fontSize: theme.fontSizes.sm,
   },
 }));
-
+const truncate = (input: string) =>
+  input.length > 20 ? `${input.substring(0, 20)}...` : input;
 const GameCardWrapper = ({ data }: { data: Match }) => {
   const { classes } = useStyles();
   return (
@@ -36,7 +37,7 @@ const GameCardWrapper = ({ data }: { data: Match }) => {
     >
       <Group position="apart">
         <Group align={"flex-end"}>
-          <Text className={classes.title}>{data.title}</Text>
+          <Text className={classes.title}>{truncate(data.title)}</Text>
         </Group>
         <Group>
           <Badge>{data.status}</Badge>

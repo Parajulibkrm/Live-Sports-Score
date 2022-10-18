@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import { IconCalendar } from "@tabler/icons";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Match } from "../../types";
 const useStyles = createStyles((theme) => ({
   item: {
@@ -40,8 +41,9 @@ const MatchListItem = ({
   min?: boolean;
 }) => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
   return (
-    <div className={classes.item}>
+    <div className={classes.item} onClick={() => navigate(`/game/${data.key}`)}>
       <Group position="apart">
         <div>
           <Group position="left">

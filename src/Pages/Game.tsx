@@ -11,11 +11,20 @@ import {
   Indicator,
   ScrollArea,
   Space,
+  Stack,
   Text,
+  ThemeIcon,
 } from "@mantine/core";
 
 import { Tabs } from "@mantine/core";
-import { IconPhoto, IconMessageCircle, IconSettings } from "@tabler/icons";
+import {
+  IconPhoto,
+  IconMessageCircle,
+  IconSettings,
+  IconAt,
+  IconMapPin,
+  IconClock,
+} from "@tabler/icons";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -26,6 +35,7 @@ import FootballPreloader from "../Components/FootballPreloader";
 import GameCard from "../Components/GameCard";
 import GameHeader from "../Components/GameHeader";
 import GameTimeline from "../Components/GameTimeline";
+import MatchAbout from "../Components/MatchAbout";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   card: {
@@ -187,11 +197,41 @@ const Game = () => {
           </Tabs.Panel>
 
           <Tabs.Panel value="about" pt="xs">
-            Messages tab content
+            <Text size={"xl"} m={5}>
+              {match.title}
+            </Text>
+            <Badge size="sm" sx={{ width: 100 }}>
+              {match.status}
+            </Badge>
+            <Text size={"md"} m={5}>
+              {match.desc}
+            </Text>
+
+            <Space h={5} />
+            <Stack>
+              <Group>
+                <ThemeIcon size={40} radius="md" color={"blue"}>
+                  <IconMapPin size={24} />
+                </ThemeIcon>
+                <div>
+                  <Text size={"sm"}>Venue</Text>
+                  <Text>{match.venue}</Text>
+                </div>
+              </Group>
+              <Group>
+                <ThemeIcon size={40} radius="md" color={"blue"}>
+                  <IconClock size={24} />
+                </ThemeIcon>
+                <div>
+                  <Text size={"sm"}>Date Time</Text>
+                  <Text>{new Date(match.time).toLocaleString()}</Text>
+                </div>
+              </Group>
+            </Stack>
           </Tabs.Panel>
 
           <Tabs.Panel value="poll" pt="xs">
-            Settings tab content
+            Coming Soon
           </Tabs.Panel>
         </Tabs>
       </Card>

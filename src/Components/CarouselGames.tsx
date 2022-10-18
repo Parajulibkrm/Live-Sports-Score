@@ -87,7 +87,7 @@ function CarouselGames({ data }: { data: Match[] }) {
       <Carousel
         getEmblaApi={setEmbla}
         height={200}
-        slideSize="33.333333%"
+        slideSize="45%"
         slideGap="md"
         align="start"
         slidesToScroll={2}
