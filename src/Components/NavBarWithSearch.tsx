@@ -204,7 +204,7 @@ export function NavbarSimple(): JSX.Element {
             </Group>
             <Image
               className={classes.header}
-              src={dark ? "./dark.png" : "./light.png"}
+              src={dark ? "./Dark.png" : "./light.png"}
             />
             <Group position="apart">
               <Group>

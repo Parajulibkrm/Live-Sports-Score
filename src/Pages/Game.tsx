@@ -102,6 +102,7 @@ const Game = () => {
           <Group position="apart">
             <Group position="left">
               <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+                {/* @ts-ignore */}
                 {goals?.[`${match?.teams[0]?.key}`]?.map((goal) => {
                   // console.log(goal);
                   return (
@@ -114,6 +115,7 @@ const Game = () => {
             </Group>
             <Space h="md" />
             <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+              {/* @ts-ignore */}
               {goals?.[`${match.teams[1].key}`]?.map((goal) => {
                 // console.log(goal);
                 return (

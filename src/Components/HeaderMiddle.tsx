@@ -108,7 +108,7 @@ export function HeaderMiddle(): JSX.Element {
         </Avatar> */}
       </Group>
       <Image
-        src={dark ? "dark.png" : "light.png"}
+        src={dark ? "Dark.png" : "light.png"}
         style={{ maxHeight: 50, maxWidth: 100 }}
       />
 

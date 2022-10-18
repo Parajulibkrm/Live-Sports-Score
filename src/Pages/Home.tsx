@@ -29,10 +29,14 @@ const Home = () => {
       ).data
   );
   const { data: matches } = useQuery<{ items: Match[]; count: number }>(
-    ["matches"],
+    ["matches", selected],
     async () =>
       await (
-        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/match`)
+        await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/match${
+            selected ? `?tournament.key=${selected}` : ""
+          }`
+        )
       ).data
   );
   useEffect(() => {
