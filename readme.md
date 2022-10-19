@@ -57,6 +57,7 @@ A responsive progressive web app using Pusher.js to broadcast and view live scor
 - [x] Lazy Loaded
 - [x] Responsive
 - [x] Installable
+- [x] [Live Demo with realtime Simulation](https://skore.bikram.io/game/test)
 
 <a href="#" target="_blank"><img align="right" alt="GIF" width="50%" src="screenshots/Loader.gif" /></a>
 
@@ -68,10 +69,11 @@ A responsive progressive web app using Pusher.js to broadcast and view live scor
 ![](screenshots/1.jpeg)
 ![](screenshots/2.jpeg)
 
-<a href="#" target="_blank"><img align="right" alt="GIF" width="50%" src="screenshots/3.png" /></a>
+
+<a href="#" target="_blank"><img align="right" alt="GIF" width="48%" src="screenshots/3.png" /></a>
 
 <p align="center">
-  <a href="#" target="_blank"><img width="50%" src="screenshots/4.png" /></a>
+  <a href="#" target="_blank"><img width="48%" src="screenshots/4.png" /></a>
 </p>
 
 
