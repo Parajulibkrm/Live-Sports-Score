@@ -33,6 +33,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const truncate = (input: string) =>
+  input.length > 25 ? `${input.substring(0, 20)}...` : input;
+
 const MatchListItem = ({
   data,
   min = false,
@@ -74,7 +77,7 @@ const MatchListItem = ({
         <MediaQuery smallerThan={"sm"} styles={{ fontSize: 13 }}>
           <div style={{ fontSize: min ? 13 : 16 }}>
             <Center>
-              <Text>{data.title}</Text>
+              <Text>{truncate(data.title)}</Text>
             </Center>
             <Group position="center">
               <IconCalendar size={20} />{" "}

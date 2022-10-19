@@ -91,6 +91,7 @@ const Game = () => {
   if (id === undefined) navigate("/");
   const [liveCount, setLiveCount] = useState(0);
   const [goals, setGoals] = useState<any[]>([]);
+  const [reset, setReset] = useState(true);
 
   if (isLoading || !match) return <FootballPreloader />;
   return (
@@ -183,7 +184,9 @@ const Game = () => {
           <Tabs.List>
             <Tabs.Tab value="about">About</Tabs.Tab>
             <Tabs.Tab value="live">Live Commentary</Tabs.Tab>
-            {match.key === 'test' && (<Tabs.Tab value='simulate'>Simulate</Tabs.Tab>)}
+            {match.key === "test" && (
+              <Tabs.Tab value="simulate">Simulate</Tabs.Tab>
+            )}
           </Tabs.List>
 
           <Tabs.Panel
@@ -194,6 +197,7 @@ const Game = () => {
             <GameTimeline
               id={id}
               setLiveCount={(num: number) => setLiveCount(num)}
+              reset={reset}
             />
             {/* </Box> */}
           </Tabs.Panel>
@@ -232,11 +236,19 @@ const Game = () => {
             </Stack>
           </Tabs.Panel>
 
-          
-          {match.key === 'test' && (<Tabs.Panel value="simulate" pt="xs">
-           <Button onClick={() =>{ setGoals([]); startSimulation()}}>Start Simulation</Button>
-          </Tabs.Panel>)
-          }
+          {match.key === "test" && (
+            <Tabs.Panel value="simulate" pt="xs">
+              <Button
+                onClick={() => {
+                  setGoals([]);
+                  startSimulation();
+                  setReset((r) => !r);
+                }}
+              >
+                Start Simulation
+              </Button>
+            </Tabs.Panel>
+          )}
         </Tabs>
       </Card>
     </Card>

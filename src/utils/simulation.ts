@@ -44,7 +44,7 @@ const startSimulation = async () => {
 	let counter = 0;
 	await axios.post(`${import.meta.env.VITE_BACKEND_URL}/match/test/event`, getPayload(counter))
 	setInterval(async () => {
-		if (++counter > 90) return
+		if (++counter > payload.length) return
 		await axios.post(`${import.meta.env.VITE_BACKEND_URL}/match/test/event`, { ...payload[counter], "timeStamp": `${Date.now()}`, })
 	}, 20000)
 }

@@ -20,9 +20,11 @@ import { getIconData } from "../utils/icons";
 function GameTimeline({
   id,
   setLiveCount,
+  reset
 }: {
   id: string | undefined;
   setLiveCount: (arg: number) => void;
+  reset: boolean,
 }) {
   const [events, setEvents] = useState<Event[]>([]);
   if (!id) return null;
@@ -57,6 +59,9 @@ function GameTimeline({
       channel.unsubscribe();
     };
   }, []);
+  useEffect(()=> {
+    setEvents([])
+  },[reset])
   return (
     <ScrollArea viewportRef={viewport}>
       <Box style={{ height: "auto" }}>
@@ -76,7 +81,7 @@ function GameTimeline({
           />
           <Timeline>
             {events.map((event) => {
-              const bulletData = getIconData(event.type);
+              const bulletData = getIconData(event?.type);
               return (
                 <Timeline.Item
                   key={event.timeStamp}
