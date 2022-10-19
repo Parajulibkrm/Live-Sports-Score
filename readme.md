@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Parajulibkrm/Live-Sports-Score">
-    <img src="public/dark.png" alt="Logo"  height="100">
+    <img src="https://skore.bikram.io/Dark.png" alt="Logo"  height="100">
   </a>
 
   <h3 align="center">Skore- Live Score Application</h3>
