@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Button,
   Card,
   Center,
   Container,
@@ -35,7 +36,8 @@ import FootballPreloader from "../Components/FootballPreloader";
 import GameCard from "../Components/GameCard";
 import GameHeader from "../Components/GameHeader";
 import GameTimeline from "../Components/GameTimeline";
-import MatchAbout from "../Components/MatchAbout";
+import startSimulation from "../utils/simulation";
+// import MatchAbout from "../Components/MatchAbout";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   card: {
@@ -181,7 +183,7 @@ const Game = () => {
           <Tabs.List>
             <Tabs.Tab value="about">About</Tabs.Tab>
             <Tabs.Tab value="live">Live Commentary</Tabs.Tab>
-            <Tabs.Tab value="poll">Poll</Tabs.Tab>
+            {match.key === 'test' && (<Tabs.Tab value='simulate'>Simulate</Tabs.Tab>)}
           </Tabs.List>
 
           <Tabs.Panel
@@ -230,9 +232,11 @@ const Game = () => {
             </Stack>
           </Tabs.Panel>
 
-          <Tabs.Panel value="poll" pt="xs">
-            Coming Soon
-          </Tabs.Panel>
+          
+          {match.key === 'test' && (<Tabs.Panel value="simulate" pt="xs">
+           <Button onClick={() =>{ setGoals([]); startSimulation()}}>Start Simulation</Button>
+          </Tabs.Panel>)
+          }
         </Tabs>
       </Card>
     </Card>

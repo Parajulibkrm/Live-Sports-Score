@@ -17,6 +17,6 @@ export const getIconData = (event: string) => {
         case 'CORNER':
             return { icon: '', title: 'Corner', color: { from: 'indigo', to: 'cyan' } }
         default:
-            return { icon: '', title: null, color: { from: 'indigo', to: 'cyan' } }
+            return { icon: '', title: event ?? '', color: { from: 'indigo', to: 'cyan' } }
     }
 }
